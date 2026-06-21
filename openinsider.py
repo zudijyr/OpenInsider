@@ -6,7 +6,7 @@ from io import StringIO
 import yfinance as yf
 from pandas.tseries.offsets import BDay
 
-url = "http://www.openinsider.com/screener?s=&o=&pl=&ph=&ll=&lh=100&fd=-1&fdr=05%2F01%2F2021+-+05%2F09%2F2025&td=0&tdr=&fdlyl=&fdlyh=&daysago=&xp=1&vl=100&vh=&ocl=&och=&sic1=-1&sicl=100&sich=9999&isofficer=1&iscob=1&isceo=1&ispres=1&iscoo=1&iscfo=1&isgc=1&isvp=1&grp=0&nfl=&nfh=&nil=&nih=&nol=&noh=&v2l=&v2h=&oc2l=&oc2h=&sortcol=0&cnt=5000&page=1"
+url = "http://www.openinsider.com/screener?s=&o=&pl=&ph=&ll=&lh=100&fd=-1&fdr=05%2F01%2F2021+-+05%2F09%2F2025&td=0&tdr=&fdlyl=&fdlyh=&daysago=&xp=1&vl=100&vh=&ocl=&och=&sic1=-1&sicl=100&sich=9999&isofficer=1&iscob=1&isceo=1&ispres=1&iscoo=1&iscfo=1&isgc=1&isvp=1&grp=0&nfl=&nfh=&nil=&nih=&nol=&noh=&v2l=&v2h=&oc2l=&oc2h=&sortcol=0&cnt=500&page=1"
 
 headers = {
     "User-Agent": "Mozilla/5.0 research script; contact: your-email@example.com"
@@ -128,7 +128,7 @@ df["value"] = df["value"].apply(parse_money)
 
 signals = df[
     df["trade_type"].astype(str).str.contains("P - Purchase", na=False)
-    & df["title"].astype(str).str.contains("CEO", case=False, na=False)
+    #& df["title"].astype(str).str.contains("CEO", case=False, na=False)
     & (df["value"] >= 100_000)
 ].copy()
 
